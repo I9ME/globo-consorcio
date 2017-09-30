@@ -1,0 +1,382 @@
+.barra{
+  $self : &;
+  @include span(1);
+  @include fonts(500,13);
+  background: url(../images/barra-header.png) center; 
+  height: 60px;
+  padding: 20px 0;
+  text-transform: uppercase;
+
+  @include respond-to(sm){
+    @include fonts(500,11);
+  }
+
+  @include e('contatos'){
+  @include span(1);
+  display: flex;
+  
+    @include respond-to(sm){
+      @include span(.30);
+    }
+  }
+
+  @include e('phone'){
+    @include span(.5);
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+
+    @include m('azul'){
+      color: $blue;
+
+      a{
+        width: 100%;
+        justify-content: flex-end;
+        display: flex;
+        @include respond-to(sm){
+          @include Display_flex(flex,center,center);
+        }
+        &:hover{
+          color: $blue-light;
+          transition: all 0.4s ease;
+        }
+      }
+    } 
+  }
+
+
+  @include e('number'){
+    span{
+      @include fonts(200);
+      margin-left: 3px;
+    }
+  }
+
+  @include e('call'){
+    @include fonts(200);
+    margin-left: 2%;
+
+    @include respond-to(sm){
+      @include fonts(300,9);
+    }
+  }
+
+  @include e('title-center'){
+    display: none;
+
+    @include respond-to(sm){
+      @include span(.40);
+      display: flex;
+    }
+  }
+
+  @include e('texto'){
+    @include span(1);
+    text-align: center;
+
+    span{
+      @include fonts(200);
+
+      @include respond-to(sm){
+        @include fonts(300,11);
+      }
+    }
+  }
+
+  @include e('servicos'){
+    display: none;
+
+    @include respond-to(sm){
+      @include span(.30);
+      display: flex;  
+    }
+  }
+
+  @include e('servico-cliente'){
+    @include span(.5);
+    @include Display_flex(flex,center,center);
+
+
+    span{
+      margin-left: 2%;
+    }
+
+      @include m('hover'){
+        
+        a{
+          align-items: center;
+          color: $gray;
+          display: flex;
+          width: 100%;
+        
+          &:hover{
+            color: $blue-light;
+            transition: all 0.4s ease;
+          }
+        }
+      }  
+  }
+
+  @include e('servico-midias'){
+    @include span(.5);
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+}
+
+.header{
+  $self : &;
+  @extend %boxFull;
+  height: 60px;
+  background: #ccc;
+  position: fixed;
+  top: 60px;
+  transition: all 0.4s ease;
+
+  @include respond-to(sm){
+    height: 60px;
+  }
+  @include respond-to(md){
+    @include Display_flex(flex,center,center);
+    height: 85px;
+  }
+  
+  @include e('menu-desktop'){
+    background: #aaa;
+    width: 100%;
+
+    @include respond-to(sm){
+      @include span(1);
+    }
+  }
+
+  @include e('brand'){
+    background: #000;
+    @include span(.20);
+
+    @include respond-to(sm){
+      @include span(.15);
+    }
+    @include respond-to(md){
+      @include span(.20);
+    }
+  }
+
+  @include e('logo'){
+    @include fonts(500,16);
+    margin: 0;
+  }
+
+  @include e('menu'){
+    display: none;
+   
+    @include respond-to(sm){
+      @include span(.70);
+      @include Display_flex(flex,center,center);
+      background: #ff0;
+    }
+    @include respond-to(md){
+      @include span(.60);
+    }
+
+    ul{
+      margin: 0;
+      li{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        @include respond-to(sm){
+          margin-right: 12px;
+          width: auto;
+        }
+
+        a{
+          @include fonts(400,15);
+          
+            @include respond-to(sm){
+              @include fonts(400,15);
+            }
+            @include respond-to(md){
+              @include fonts(400,18);
+            }
+        }
+      }
+    }
+  }
+
+  @include e('campo-busca'){
+    @include span(.95);
+      position: fixed;
+      bottom: 10px;
+      left: 8px;
+      align-items: center;
+      background: #00f;
+      display: flex;
+      justify-content: flex-end;
+
+      @include respond-to(sm){
+        @include span(.15);
+        position: initial;
+        bottom: 0;
+      }
+
+      @include respond-to(md){
+        @include span(.20);
+      }
+  }
+
+  @include e('busca'){
+    //display: flex;
+  }
+
+
+    // //MENU-TOGGLE
+   @include e('toggle'){
+   //on activation 
+     float: right;
+     width: 60px;
+     height: 60px;
+     border-radius: 30px;
+     border: 2px solid #fff;
+     padding: 14px;
+
+       .toggle{ 
+         background-color: transparent; 
+         width:53px; 
+         height: 17px; 
+         margin:5px 11px;    
+         padding: 24px 13px 24px;
+         border-radius: 7px; position:relative; z-index:999; 
+       } 
+       &.on span{ 
+         background-color: transparent;
+       }
+       &.on{ 
+         background-color:#fff; 
+       }
+       &.on span{
+        
+         &:before{ 
+           transform: rotate(45deg) translate(9px, 9px); 
+           background-color: #003793; 
+         }
+
+       }
+       &.on span{
+        
+         &:after{ 
+         transform: rotate(-45deg) translate(7px, -8px); 
+         background-color: #003793;
+         }
+
+       }
+       &.on + .header__menu{ 
+         display:block; opacity: 1; visibility:visible; background: hsl(0, 0%, 100%);  width:100%; height:auto; z-index: 1;  
+       }
+
+        span {
+             position: relative; 
+             display: block; 
+             left: -1px; 
+             top: 10px;
+             height: 6px; 
+             background-color: #fff; 
+
+               &:after, 
+               &:before {
+                 content: ""; 
+                 position: absolute; 
+                 left: 0; 
+                 top:-12px; 
+                 width: 31px; 
+                 height: 6px; 
+                 background-color: #fff; 
+                 border-radius: 1px; 
+                 transition: all 0.3s; backface-visibility:hidden; 
+               }
+
+               &:after{ 
+                 top:12px;
+                 }
+           }
+    @include respond-to(sm){
+      display: none;
+    }
+
+    @include respond-to(md){
+      display: none;
+    }
+
+   }
+
+
+
+
+
+
+
+
+
+
+
+
+}
+.sticky{
+  top: 0px;
+  transition: all 0.4s ease;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.icon-border{
+  @include Display_flex(flex,center,center);
+  border: 1px solid $gray;
+  background: $gray-light;
+  border-radius: 22px;
+  color: $gray;
+  height: 22px;
+  margin-left: 7px;
+  width: 22px;
+
+  &:hover{  
+    background: $blue;
+    border: 2px solid $blue;
+    color: $white;
+    transition: all 0.4s ease;
+
+  }
+}
+.icon-border--notMargin{
+  margin: 0;
+}
+
+
+
+
+
+
+
